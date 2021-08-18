@@ -1,1 +1,44 @@
-<p>doctor works!</p>
+<nz-table #doctorTable [nzData]="data" [nzScroll]="{ x: 'auto' }">
+    <thead>
+        <tr>
+            <th>วันที่เขาระบบ</th>
+            <th>ID</th>
+            <th>Ref ID</th>
+            <th>Ref ID by Dr.</th>
+            <th>Ref Combined</th>
+            <th>CM Alert แพทย์</th>
+            <th>คำนำหน้า</th>
+            <th>ชื่อ นามสกุล</th>
+            <th>เบอร์โทรศัพท์</th>
+            <th>LINE ID</th>
+            <th>ชื่อญาติติดต่อฉุกเฉิน</th>
+            <th>เบอร์โทรฉุกเฉิน</th>
+            <th>เวชระเบียน</th>
+            <th>ชื่อแพทย์</th>
+            <th>วันพบแพทย์ล่าสุด</th>
+            <th>สีผู้ป่วย</th>
+            <th>อายุ</th>
+            <th>น้ำหนัก</th>
+            <th>โรคประจำตัว</th>
+            <th>RR วันแรกรับ</th>
+            <th>O2sat วันแรกรับ</th>
+            <th>แพทย์: อาการ</th>
+            <th>แพทย์: ประวัติสั่งยาเดิม</th>
+            <th>แพทย์: หมายเหตุ</th>
+            <th>ID พยาบาล/NU Code</th>
+            <th>วันพบพยาบาลล่าสุด</th>
+            <th>พยาบาล: สีผู้ป่วย</th>
+            <th>พยาบาล: อาการ</th>
+            <th>แพทย์: ต้องการนักจิตวิทยา</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of doctorTable.data">
+            <td>{{ data.datein }}</td>
+            <td>{{ data.id }}</td>
+            <td>{{ data.refid }}</td>
+            <td>{{ data.refidbydr }}</td>
+            <td>{{ data.refcombined }}</td>
+        </tr>
+    </tbody>
+</nz-table>
