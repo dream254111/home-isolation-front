@@ -34,6 +34,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { MailOutline } from '@ant-design/icons-angular/icons';
 import { AppstoreOutline } from '@ant-design/icons-angular/icons';
 import { SettingOutline } from '@ant-design/icons-angular/icons';
+import { PrescriptionComponent } from './dept/prescription/prescription.component';
 
 const icons = [
   MailOutline, 
@@ -52,6 +53,7 @@ const appRouter: Routes = [
   { path: 'ci', component: CiComponent },
   { path: 'cm', component: CmComponent },
   { path: 'office', component: OfficeComponent },
+  { path: 'prescription', component: PrescriptionComponent },
   { path: '', redirectTo: 'registration', pathMatch: 'full' },
 ]
 
@@ -72,6 +74,7 @@ registerLocaleData(en);
     CiComponent,
     CmComponent,
     OfficeComponent,
+    PrescriptionComponent,
   ],
   imports: [
     BrowserModule,
