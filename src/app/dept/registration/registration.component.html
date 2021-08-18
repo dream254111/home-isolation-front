@@ -1,1 +1,22 @@
-<p>registration works!</p>
+<nz-table #regisTable [nzData]="data">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ref ID</th>
+            <th>คำนำหน้า</th>
+            <th>เบอร์โทรศัพท์</th>
+            <th>Line ID</th>
+            <th>เวชระเบียน</th>
+            <th>วันที่เข้าระบบ</th>
+            <th>ผู้ลงข้อมูล</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of regisTable.data">
+            <td>{{ data.id }}</td>
+            <td>{{ data.refid }}</td>
+            <td>{{ data.prefix }}</td>
+            <td>{{ data.fullname }}</td>
+        </tr>
+    </tbody>
+</nz-table>

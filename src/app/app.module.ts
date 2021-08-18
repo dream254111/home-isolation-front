@@ -28,6 +28,7 @@ import { OfficeComponent } from './dept/office/office.component';
 /* NgZorro Part */
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 /* NgIcon Part */
 import { MailOutline } from '@ant-design/icons-angular/icons';
@@ -84,6 +85,7 @@ registerLocaleData(en);
     /* NgZorro Part */
     NzMenuModule,
     NzIconModule.forRoot(icons),
+    NzTableModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
