@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilService } from 'src/app/services/util.service';
 import { Registration } from './registration.model';
 
 @Component({
@@ -9,7 +10,7 @@ import { Registration } from './registration.model';
 export class RegistrationComponent implements OnInit {
   listData: Registration[] = []
   
-  constructor() { 
+  constructor(public util: UtilService) { 
     var registration1: Registration = new Registration(1);
     registration1.TITLE = "Mr."
     registration1.REFID = undefined
