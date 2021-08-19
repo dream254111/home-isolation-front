@@ -1,9 +1,10 @@
-<nz-table #regisTable [nzData]="data" [nzScroll]="{ x: '12000px' }">
+<nz-table #regisTable nzBordered [nzData]="listData" [nzScroll]="{ x: '8000px' }" nzSize="small">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Ref ID</th>
-            <th>คำนำหน้า</th>
+            <th nzWidth="50px">ID</th>
+            <th nzWidth="75px">Ref ID</th>
+            <th nzWidth="100px">คำนำหน้า</th>
+            <th>ชื่อ-นามสกุล</th>
             <th>เบอร์โทรศัพท์</th>
             <th>Line ID</th>
             <th>เวชระเบียน</th>
@@ -37,21 +38,89 @@
             <th>รหัสไปรษณีย์</th>
             <th>โทรศัพท์มือถือ</th>
             <th>รวมที่อยู่และเบอร์มือถือ</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th>วันที่พบแพทย์ล่าสุด</th>
+            <th>แพทย์:สีผู้ป่วย</th>
+            <th>วันพบพยาบาลล่าสุด</th>
+            <th>พยาบาล:สีผู้ป่วย</th>
+            <th>ถ่ายบัตรประชาชน</th>
+            <th>ผลตรวจ COVID</th>
+            <th>ผู้ลงข้อมูล</th>
+            <th>สถานะ office</th>
+            <th>CM Alert HI</th>
+            <th>ลงชื่อ HI</th>
+            <th>วันที่อัปเดตข้อมูล</th>
+            <th>HI</th>
+            <th>CM Alert CI</th>
+            <th>ลงชื่อ CI</th>
+            <th>วันที่อัปเดตข้อมูล</th>
+            <th>O2</th>
+            <th>CI</th>
+            <th>เวชระเบียน:ต้องการนักจิตวิทยา</th>
+            <th>แพทย์:ต้องการนักจิตวิทยา</th>
+            <th>พยาบาล:ต้องการนักจิตวิทยา</th>
+            <th>ต้องการนักจิตวิทยา</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let data of regisTable.data">
-            <td>{{ data.id }}</td>
-            <td>{{ data.refid }}</td>
-            <td>{{ data.prefix }}</td>
-            <td>{{ data.fullname }}</td>
+            <td class="cell-center">{{ data.ID }}</td>
+            <td class="cell-center">{{ data.REFID }}</td>
+            <td class="cell-center">{{ data.TITLE }}</td>
+            <td>{{ data.NAME }}</td>
+            <td>{{ data.MOBILE }}</td>
+            <td>{{ data.LINE }}</td>
+            <td>{{ data.STATUS }}</td>
+            <td>{{ data.DATEIN }}</td>
+            <td>{{ data.REGISTER }}</td>
+            <td>{{ data.KACHART }}</td>
+            <td>{{ data.DATESYMPTOM }}</td>
+            <td>{{ data.DATEPOSITIVE }}</td>
+            <td>{{ data.TESTING }}</td>
+            <td>{{ data.TESTINGLOCATION }}</td>
+            <td>{{ data.TESTINGREMARK }}</td>
+            <td>{{ data.THAIID }}</td>
+            <td>{{ data.GENDER }}</td>
+            <td>{{ data.AGE }}</td>
+            <td>{{ data.BIRTHDATE }}</td>
+            <td>{{ data.WEIGHT }}</td>
+            <td>{{ data.MARRIAGE }}</td>
+            <td>{{ data.DISEASE }}</td>
+            <td>{{ data.HEALTH }}</td>
+            <td>{{ data.HEALTHHOSPITAL }}</td>
+            <td>{{ data.HEALTHPROJECT }}</td>
+            <td>{{ data.RELATIVE }}</td>
+            <td>{{ data.RELATIVEMOBILE }}</td>
+            <td>{{ data.RELATIVEMOBILE2 }}</td>
+            <td>{{ data.HOMENO }}</td>
+            <td>{{ data.HOMESOI }}</td>
+            <td>{{ data.HOMEROAD }}</td>
+            <td>{{ data.HOMESUBDISTRICT }}</td>
+            <td>{{ data.HOMEDISTRICT }}</td>
+            <td>{{ data.HOMEPROVINCE }}</td>
+            <td>{{ data.HOMEPOSTAL }}</td>
+            <td>{{ data.MOBILETYPE }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ data.OFFICETHAIIDCOPY }}</td>
+            <td>{{ data.OFFICECOVIDTEST }}</td>
+            <td></td>
+            <td>{{ data.OFFICESTATUS }}</td>
+            <td></td>
+            <td>{{ data.HI }}</td>
+            <td>{{ data.HIDATE }}</td>
+            <td>{{ data.HISTATUS }}</td>
+            <td></td>
+            <td>{{ data.CI }}</td>
+            <td>{{ data.CIDATE }}</td>
+            <td>{{ data.CIO2 }}</td>
+            <td>{{ data.CISTATUS }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ data.PSY }}</td>
         </tr>
     </tbody>
 </nz-table>
