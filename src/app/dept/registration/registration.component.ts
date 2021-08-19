@@ -9,9 +9,14 @@ export class RegistrationComponent implements OnInit {
   data = [
     {
       id: 1,
-      refid: 0,
+      refId: 0,
       prefix: 'Mr.',
-      fullname: 'Chayapon Puakalong'
+      fullname: 'Chayapon Puakalong',
+      telno: '',
+      line: '',
+      registration: '',
+      accessdt: '',
+
     },
     {
       id: 2,
