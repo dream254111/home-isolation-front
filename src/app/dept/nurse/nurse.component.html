@@ -1,1 +1,61 @@
-<p>nurse works!</p>
+<nz-table #nurseTable nzBordered [nzData]="listData" [nzScroll]="{ x: '4000px' }" nzSize="small">
+    <thead>
+        <tr>
+            <th>วันที่เข้าระบบ</th>
+            <th>ID</th>
+            <th>Ref ID</th>
+            <th>CM Alert พยาบาล</th>
+            <th>คำนำหน้า</th>
+            <th>ชื่อ-นามสกุล</th>
+            <th>เบอร์โทรศัพท์</th>
+            <th>Line ID</th>
+            <th>เวชระเบียน</th>
+            <th>อายุ</th>
+            <th>น้ำหนัก</th>
+            <th>โรคประจำตัว</th>
+            <th>วันที่ตรวจพบเชื้อ</th>
+            <th>วันที่ควร Discharge</th>
+            <th>ชื่อแพทย์</th>
+            <th>วันที่พบแพทย์ล่าสุด</th>
+            <th>แพทย์:สีผู้ป่วย</th>
+            <th>#REF!</th>
+            <th>แพทย์:ประวัติสั่งยา</th>
+            <th>ID พยาบาล</th>
+            <th>วันพบพยาบาลล่าสุด</th>
+            <th>พยาบาล:สีผู้ป่วย</th>
+            <th>พยาบาล:อาการ</th>
+            <th>พยาบาล:หมายเหตุ</th>
+            <th>พยาบาล:ต้องการนักจิตวิทยา</th>
+            <th>วันที่พยาบาลตรวจล่าสุด</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of nurseTable.data">
+            <td></td>
+            <td>{{ data.PAT_ID }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ data.ID }}</td>
+            <td>{{ util.DateToString(data.DATE) }}</td>
+            <td>{{ data.COLOR }}</td>
+            <td>{{ data.RECORD }}</td>
+            <td>{{ data.REMARK }}</td>
+            <td>{{ data.PSY }}</td>
+        </tr>
+    </tbody>
+</nz-table>

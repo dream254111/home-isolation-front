@@ -6,7 +6,7 @@ export class UtilService {
         if (input == undefined || input == null) return ''
 
         var year = input.getFullYear() + 543
-        var month = this.ToTwoDigitNumber(input.getMonth())
+        var month = this.ToTwoDigitNumber(input.getMonth() + 1)
         var date = this.ToTwoDigitNumber(input.getDate())
         var separator = "/"
 
