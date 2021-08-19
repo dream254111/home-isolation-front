@@ -70,18 +70,18 @@
             <td>{{ data.MOBILE }}</td>
             <td>{{ data.LINE }}</td>
             <td>{{ data.STATUS }}</td>
-            <td>{{ data.DATEIN }}</td>
+            <td>{{ util.DateToString(data.DATEIN) }}</td>
             <td>{{ data.REGISTER }}</td>
             <td>{{ data.KACHART }}</td>
-            <td>{{ data.DATESYMPTOM }}</td>
-            <td>{{ data.DATEPOSITIVE }}</td>
+            <td>{{ util.DateToString(data.DATESYMPTOM) }}</td>
+            <td>{{ util.DateToString(data.DATEPOSITIVE) }}</td>
             <td>{{ data.TESTING }}</td>
             <td>{{ data.TESTINGLOCATION }}</td>
             <td>{{ data.TESTINGREMARK }}</td>
             <td>{{ data.THAIID }}</td>
             <td>{{ data.GENDER }}</td>
             <td>{{ data.AGE }}</td>
-            <td>{{ data.BIRTHDATE }}</td>
+            <td>{{ util.DateToString(data.BIRTHDATE) }}</td>
             <td>{{ data.WEIGHT }}</td>
             <td>{{ data.MARRIAGE }}</td>
             <td>{{ data.DISEASE }}</td>
@@ -110,11 +110,11 @@
             <td>{{ data.OFFICESTATUS }}</td>
             <td></td>
             <td>{{ data.HI }}</td>
-            <td>{{ data.HIDATE }}</td>
+            <td>{{ util.DateToString(data.HIDATE) }}</td>
             <td>{{ data.HISTATUS }}</td>
             <td></td>
             <td>{{ data.CI }}</td>
-            <td>{{ data.CIDATE }}</td>
+            <td>{{ util.DateToString(data.CIDATE) }}</td>
             <td>{{ data.CIO2 }}</td>
             <td>{{ data.CISTATUS }}</td>
             <td></td>
