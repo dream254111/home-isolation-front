@@ -1,1 +1,56 @@
-<p>prescription works!</p>
+<nz-table #prescriptionTable [nzData]="data" [nzScroll]="{ x: 'auto' }">
+    <thead>
+        <tr>
+            <th>เลขที่ใบสั่งยา</th>
+            <th>ID</th>
+            <th>Ref Combined</th>
+            <th>สั่งยาครั้งที่</th>
+            <th>CM Alert แพทย์ (สั่งยา)</th>
+            <th>คำนำหน้า</th>
+            <th>ชื่อ</th>
+            <th>ที่อยู่</th>
+            <th>เบอร์โทรศัพท์</th>
+            <th>LINE ID</th>
+            <th>ชื่อญาติติดต่อฉุกเฉิน</th>
+            <th>เบอร์โทรฉุกเฉิน</th>
+            <th>อายุ</th>
+            <th>น้ำหนัก</th>
+            <th>ชื่อแพทย์</th>
+            <th>วันที่สั่ง</th>
+            <th>สีผู้ป่วย</th>
+            <th>โรคประจำตัว</th>
+            <th>อาการ</th>
+            <th>O2sat วันแรกรับ</th>
+            <th>Favi Dose 1 and 2-5</th>
+            <th>จำนวน Favi Dose 1 and 2-5</th>
+            <th>Favi Dose 6-10</th>
+            <th>จำนวน Favi Dose 6-10</th>
+            <th>Dexamethosone</th>
+            <th>ฟ้าทะลายโจร</th>
+            <th>ยาชุดตามอาการ</th>
+            <th>สรุปยาชุดตามอาการ</th>
+            <th>เครื่องวัดออกซิเจน</th>
+            <th>ปรอทวัดไข้</th>
+            <th>เครื่องเจาะน้ำตาล</th>
+            <th>แผ่นวัดน้ำตาลและเข็ม</th>
+            <th>ATK</th>
+            <th>ออกซิเจน</th>
+            <th>สรุปยา</th>
+            <th>สรุปอุปกรณ์</th>
+            <th>ID เภสัช</th>
+            <th>วันเวลาที่ confirm</th>
+            <th>เภสัช Confirm/แก้ไข</th>
+            <th>เภสัช รายการแก้ไข</th>
+            <th>วันเวลาที่ confirm สถานะ</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of prescriptionTable.data">
+            <td>{{ data.preid }}</td>
+            <td>{{ data.id }}</td>
+            <td>{{ data.refcombined }}</td>
+            <td>{{ data.preno }}</td>
+            <td>{{ data.alert }}</td>
+        </tr>
+    </tbody>
+</nz-table>
