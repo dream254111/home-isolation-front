@@ -1,1 +1,126 @@
-<p>office works!</p>
+<nz-table #officeTable nzBordered [nzData]="listData" [nzScroll]="{ x: 'auto' }" nzSize="small">
+    <thead>
+        <tr>
+            <th nzWidth="50px">ID</th>
+            <th nzWidth="75px">Ref ID</th>
+            <th nzWidth="100px">คำนำหน้า</th>
+            <th>ชื่อ-นามสกุล</th>
+            <th>เบอร์โทรศัพท์</th>
+            <th>Line ID</th>
+            <th>เวชระเบียน</th>
+            <th>วันที่เข้าระบบ</th>
+            <th>ผู้ลงข้อมูล</th>
+            <th>กาชาด</th>
+            <th>วันแรกที่มีอาการ</th>
+            <th>วันที่ตรวจพบเชื้อ</th>
+            <th>วิธีการตรวจ</th>
+            <th>สถานที่ตรวจ</th>
+            <th>หมายเหตุ</th>
+            <th>เลขบัตรประชาชน</th>
+            <th>เพศ</th>
+            <th>อายุ</th>
+            <th>วันเกิด</th>
+            <th>น้ำหนัก</th>
+            <th>สถานภาพ</th>
+            <th>โรคประจำตัว</th>
+            <th>สิทธิ์การรักษา</th>
+            <th>โรงพยาบาล</th>
+            <th>โครงการที่เข้าร่วม</th>
+            <th>ญาติสำหรับติดต่อฉุกเฉิน</th>
+            <th>เบอร์ฉุกเฉิน</th>
+            <th>เบอร์ฉุกเฉินสำรอง</th>
+            <th>บ้านเลขที่</th>
+            <th>ซอย</th>
+            <th>ถนน</th>
+            <th>แขวง/ตำบล</th>
+            <th>เขต/อำเภอ</th>
+            <th>จังหวัด</th>
+            <th>รหัสไปรษณีย์</th>
+            <th>โทรศัพท์มือถือ</th>
+            <th>รวมที่อยู่และเบอร์มือถือ</th>
+            <th>วันที่พบแพทย์ล่าสุด</th>
+            <th>แพทย์:สีผู้ป่วย</th>
+            <th>วันพบพยาบาลล่าสุด</th>
+            <th>พยาบาล:สีผู้ป่วย</th>
+            <th>ถ่ายบัตรประชาชน</th>
+            <th>ผลตรวจ COVID</th>
+            <th>ผู้ลงข้อมูล</th>
+            <th>สถานะ office</th>
+            <th>CM Alert HI</th>
+            <th>ลงชื่อ HI</th>
+            <th>วันที่อัปเดตข้อมูล</th>
+            <th>HI</th>
+            <th>CM Alert CI</th>
+            <th>ลงชื่อ CI</th>
+            <th>วันที่อัปเดตข้อมูล</th>
+            <th>O2</th>
+            <th>CI</th>
+            <th>เวชระเบียน:ต้องการนักจิตวิทยา</th>
+            <th>แพทย์:ต้องการนักจิตวิทยา</th>
+            <th>พยาบาล:ต้องการนักจิตวิทยา</th>
+            <th>ต้องการนักจิตวิทยา</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of officeTable.data">
+            <td class="cell-center">{{ data.ID }}</td>
+            <td class="cell-center">{{ data.REFID }}</td>
+            <td class="cell-center">{{ data.TITLE }}</td>
+            <td>{{ data.NAME }}</td>
+            <td>{{ data.MOBILE }}</td>
+            <td>{{ data.LINE }}</td>
+            <td>{{ data.STATUS }}</td>
+            <td>{{ util.DateToString(data.DATEIN) }}</td>
+            <td>{{ data.REGISTER }}</td>
+            <td>{{ data.KACHART }}</td>
+            <td>{{ util.DateToString(data.DATESYMPTOM) }}</td>
+            <td>{{ util.DateToString(data.DATEPOSITIVE) }}</td>
+            <td>{{ data.TESTING }}</td>
+            <td>{{ data.TESTINGLOCATION }}</td>
+            <td>{{ data.TESTINGREMARK }}</td>
+            <td>{{ data.THAIID }}</td>
+            <td>{{ data.GENDER }}</td>
+            <td>{{ data.AGE }}</td>
+            <td>{{ util.DateToString(data.BIRTHDATE) }}</td>
+            <td>{{ data.WEIGHT }}</td>
+            <td>{{ data.MARRIAGE }}</td>
+            <td>{{ data.DISEASE }}</td>
+            <td>{{ data.HEALTH }}</td>
+            <td>{{ data.HEALTHHOSPITAL }}</td>
+            <td>{{ data.HEALTHPROJECT }}</td>
+            <td>{{ data.RELATIVE }}</td>
+            <td>{{ data.RELATIVEMOBILE }}</td>
+            <td>{{ data.RELATIVEMOBILE2 }}</td>
+            <td>{{ data.HOMENO }}</td>
+            <td>{{ data.HOMESOI }}</td>
+            <td>{{ data.HOMEROAD }}</td>
+            <td>{{ data.HOMESUBDISTRICT }}</td>
+            <td>{{ data.HOMEDISTRICT }}</td>
+            <td>{{ data.HOMEPROVINCE }}</td>
+            <td>{{ data.HOMEPOSTAL }}</td>
+            <td>{{ data.MOBILETYPE }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ data.OFFICETHAIIDCOPY }}</td>
+            <td>{{ data.OFFICECOVIDTEST }}</td>
+            <td></td>
+            <td>{{ data.OFFICESTATUS }}</td>
+            <td></td>
+            <td>{{ data.HI }}</td>
+            <td>{{ util.DateToString(data.HIDATE) }}</td>
+            <td>{{ data.HISTATUS }}</td>
+            <td></td>
+            <td>{{ data.CI }}</td>
+            <td>{{ util.DateToString(data.CIDATE) }}</td>
+            <td>{{ data.CIO2 }}</td>
+            <td>{{ data.CISTATUS }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ data.PSY }}</td>
+        </tr>
+    </tbody>
+</nz-table>
