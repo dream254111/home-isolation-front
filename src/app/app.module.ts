@@ -35,6 +35,8 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 /* NgIcon Part */
 import { MailOutline } from '@ant-design/icons-angular/icons';
@@ -101,6 +103,8 @@ registerLocaleData(en);
     NzInputModule,
     NzDatePickerModule,
     NzInputNumberModule,
+    NzCheckboxModule,
+    NzButtonModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

@@ -7,6 +7,10 @@ th.ant-table-cell {
     text-align: center;
 }
 
+.button-add {
+    margin: 10px;
+}
+
 nz-select.dropdown-title {
     width: 100px !important;
 }

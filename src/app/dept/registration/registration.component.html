@@ -1,3 +1,8 @@
+<button nz-button 
+    nzType="primary" 
+    nzShape="round"
+    (click)="addData(form)"
+    class="button-add">เพิ่มข้อมูล</button>
 <nz-table #regisTable nzBordered [nzData]="listData" [nzScroll]="{ x: '8000px' }" nzSize="small">
     <thead>
         <tr>
@@ -66,7 +71,7 @@
         <tr *ngFor="let data of regisTable.data">
             <td class="cell-center">{{ data.ID }}</td>
             <td class="cell-center">{{ data.REFID }}</td>
-            <td class="cell-center">{{ data.TITLE }}</td>
+            <td class="cell-center">{{ data.TITLE_DISPLAY }}</td>
             <td>{{ data.NAME }}</td>
             <td>{{ data.MOBILE }}</td>
             <td>{{ data.LINE }}</td>
@@ -122,13 +127,13 @@
             <td></td>
             <td></td>
             <td>{{ data.PSY }}</td>
-            <td nzRight (click)="createModal(form)">Action</td>
+            <td nzRight (click)="updateData(data, form)">Action</td>
         </tr>
     </tbody>
 </nz-table>
 
 <ng-template #form>
-    <form nz-form (ngSubmit)="submitForm()">
+    <form nz-form>
         <nz-form-item>
             <nz-form-label [nzSm]="4" nzFor="fullname">ชื่อ-นามสกุล</nz-form-label>
             <nz-form-control [nzSm]="20">
@@ -415,6 +420,114 @@
                     <nz-option nzValue="ios" nzLabel="iPhone"></nz-option>
                     <nz-option nzValue="other" nzLabel="อื่นๆ"></nz-option>
                 </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="cidcopy">ถ่ายบัตรประชาชน</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <nz-select id="cidcopy" 
+                    [(ngModel)]="current.OFFICETHAIIDCOPY" 
+                    [ngModelOptions]="{ standalone: true }">
+                    <nz-option nzValue="notdone" nzLabel="ยังไม่ได้ถ่าย"></nz-option>
+                    <nz-option nzValue="done" nzLabel="ถ่ายแล้ว"></nz-option>
+                    <nz-option nzValue="problem" nzLabel="ติดปัญหา"></nz-option>
+                    <nz-option nzValue="lbh" nzLabel="LBH"></nz-option>
+                    <nz-option nzValue="noarchieve" nzLabel="ไม่เก็บเอกสาร"></nz-option>
+                    <nz-option nzValue="nocampaign" nzLabel="ไม่เข้าร่วมโครงการ"></nz-option>
+                </nz-select>
+            </nz-form-control>
+            <nz-form-label [nzSm]="4" nzFor="covidtest">ผลตรวจ COVID</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <nz-select id="covidtest" 
+                    [(ngModel)]="current.OFFICECOVIDTEST" 
+                    [ngModelOptions]="{ standalone: true }">
+                    <nz-option nzValue="notdone" nzLabel="ยังไม่ได้ถ่าย"></nz-option>
+                    <nz-option nzValue="done" nzLabel="ถ่ายแล้ว"></nz-option>
+                    <nz-option nzValue="problem" nzLabel="ติดปัญหา"></nz-option>
+                    <nz-option nzValue="lbh" nzLabel="LBH"></nz-option>
+                    <nz-option nzValue="noarchieve" nzLabel="ไม่เก็บเอกสาร"></nz-option>
+                    <nz-option nzValue="nocampaign" nzLabel="ไม่เข้าร่วมโครงการ"></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="officestatus">สถานะ Office</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="officestatus"
+                    placeholder="สถานะของ Office"
+                    [(ngModel)]="current.OFFICESTATUS"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="hiname">ลงชื่อ HI</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="hiname"
+                    placeholder="ชื่อ-นามสกุลของ HI"
+                    [(ngModel)]="current.HI"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+            <nz-form-label [nzSm]="4" nzFor="hidate">วันที่อัพเดตข้อมูล</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <nz-date-picker id="hidate" 
+                    nzFormat="dd/MM/yyyy" 
+                    [(ngModel)]="current.HIDATE" 
+                    [ngModelOptions]="{ standalone: true }"></nz-date-picker>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="histatus">สถานะ HI</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <nz-select id="histatus" 
+                    [(ngModel)]="current.HISTATUS" 
+                    [ngModelOptions]="{ standalone: true }">
+                    <nz-option nzValue="contacting" nzLabel="กำลังติดต่อ"></nz-option>
+                    <nz-option nzValue="hi" nzLabel="HI"></nz-option>
+                    <nz-option nzValue="himprove" nzLabel="ปรับปรุง HI"></nz-option>
+                    <nz-option nzValue="ci" nzLabel="CI"></nz-option>
+                    <nz-option nzValue="hialert" nzLabel="HI Alert"></nz-option>
+                    <nz-option nzValue="hiout" nzLabel="ออกจากระบบ"></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="ciname">ลงชื่อ CI</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="ciname"
+                    placeholder="ชื่อ-นามสกุลของ CI"
+                    [(ngModel)]="current.CI"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+            <nz-form-label [nzSm]="4" nzFor="cidate">วันที่อัพเดตข้อมูล</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <nz-date-picker id="cidate" 
+                    nzFormat="dd/MM/yyyy" 
+                    [(ngModel)]="current.CIDATE" 
+                    [ngModelOptions]="{ standalone: true }"></nz-date-picker>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="cistatus">สถานะ CI</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="cistatus"
+                    placeholder="สถานะของ CI"
+                    [(ngModel)]="current.CISTATUS"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+            <nz-form-label [nzSm]="4" nzFor="cio2">CI (O<sub>2</sub>)</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="cio2"
+                [(ngModel)]="current.CIO2"
+                [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="psy">นักจิตวิทยา</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <label nz-checkbox
+                    [(ngModel)]="current.PSY"
+                    [ngModelOptions]="{ standalone: true }">ต้องการ</label>
             </nz-form-control>
         </nz-form-item>
     </form>

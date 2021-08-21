@@ -1,4 +1,15 @@
 export class Registration {
+    get TITLE_DISPLAY() {
+        switch(this.TITLE) {
+            case 'mr': return 'นาย'
+            case 'mrs': return 'นาง'
+            case 'miss': return 'นางสาว'
+            case 'other': return 'อื่นๆ'
+            case 'novalue': return 'ไม่ระบุ'
+            default: return 'error'
+        }
+    }
+
     constructor(
         public ID: number,
         public REFID?: number,
@@ -36,16 +47,16 @@ export class Registration {
         public HOMEPROVINCE?: string,
         public HOMEPOSTAL?: string,
         public MOBILETYPE: string = 'android',
-        public OFFICETHAIIDCOPY?: string,
-        public OFFICECOVIDTEST?: string,
+        public OFFICETHAIIDCOPY: string = 'notdone',
+        public OFFICECOVIDTEST: string = 'notdone',
         public OFFICESTATUS?: string,
         public HI?: string,
         public HIDATE?: Date,
-        public HISTATUS?: string,
+        public HISTATUS: string = 'hi',
         public CI?: string,
         public CIDATE?: Date,
         public CIO2?: string,
         public CISTATUS?: string,
-        public PSY?: string
+        public PSY: boolean = false
     ) {}
 }
