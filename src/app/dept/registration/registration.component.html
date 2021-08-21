@@ -1,18 +1,22 @@
 <div nz-row [nzGutter]="[16, 16]" class="header">
-    <div nz-col nzSpan="4">
+    <div nz-col nzSpan="8">
         <nz-input-group [nzSuffix]="inputClear">
-            <input nz-input placeholder="ชื่อ-นามสกุลของผู้ป่วย" [(ngModel)]="nameSearch" />
+            <input nz-input placeholder="ชื่อ-นามสกุลของผู้ป่วย" [(ngModel)]="nameSearch"/>
         </nz-input-group>
     </div>
-    <div nz-col nzSpan="4">
-        <button nz-button nzType="default" nzShape="round" (click)="searchName()">ค้นหา</button>
+    <div nz-col nzSpan="6">
+        <button nz-button nzType="default" nzShape="round" (click)="searchName()">
+            <i nz-icon nzType="search" nzTheme="outline"></i> ค้นหา
+        </button>
     </div>
-    <div nz-col nzSpan="16">
-        <button nz-button nzType="primary" nzShape="round" (click)="addData(form)" class="button-add">เพิ่มข้อมูล</button>
+    <div nz-col nzSpan="10">
+        <button nz-button nzType="primary" nzShape="round" (click)="addData(form)" class="button-add">
+            <i nz-icon nzType="plus" nzTheme="outline"></i> เพิ่มข้อมูล
+        </button>
     </div>
 </div>
 
-<nz-table #regisTable nzBordered [nzData]="listData" [nzScroll]="{ x: '8000px' }" nzSize="small">
+<nz-table #regisTable nzBordered [nzData]="listData" [nzScroll]="{ x: 'auto' }" nzSize="small">
     <thead>
         <tr>
             <th
@@ -21,6 +25,7 @@
                 [nzFilters]="column.listOfFilter"
                 [nzFilterFn]="column.filterFn"
                 [nzRight]="column.fixRight"
+                [nzWidth]="column.nzWidth"
             >{{ column.name }}</th>
         </tr>
     </thead>
@@ -384,6 +389,7 @@
                 </nz-select>
             </nz-form-control>
         </nz-form-item>
+        <nz-divider nzPlain nzText="Office" nzOrientation="left"></nz-divider>
         <nz-form-item>
             <nz-form-label [nzSm]="4" nzFor="cidcopy">ถ่ายบัตรประชาชน</nz-form-label>
             <nz-form-control [nzSm]="8">
@@ -421,6 +427,7 @@
                     [ngModelOptions]="{ standalone: true }" />
             </nz-form-control>
         </nz-form-item>
+        <nz-divider nzPlain nzText="HI" nzOrientation="left"></nz-divider>
         <nz-form-item>
             <nz-form-label [nzSm]="4" nzFor="hiname">ลงชื่อ HI</nz-form-label>
             <nz-form-control [nzSm]="8">
@@ -452,7 +459,7 @@
                 </nz-select>
             </nz-form-control>
         </nz-form-item>
-
+        <nz-divider nzPlain nzText="CI" nzOrientation="left"></nz-divider>
         <nz-form-item>
             <nz-form-label [nzSm]="4" nzFor="ciname">ลงชื่อ CI</nz-form-label>
             <nz-form-control [nzSm]="8">
@@ -484,6 +491,7 @@
                 [ngModelOptions]="{ standalone: true }" />
             </nz-form-control>
         </nz-form-item>
+        <nz-divider nzPlain nzText="นักจิตวิทยา" nzOrientation="left"></nz-divider>
         <nz-form-item>
             <nz-form-label [nzSm]="4" nzFor="psy">นักจิตวิทยา</nz-form-label>
             <nz-form-control [nzSm]="8">

@@ -1,6 +1,7 @@
 import { Template } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { UtilService } from 'src/app/services/util.service';
 import { Registration } from './registration.model';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -14,7 +15,12 @@ import { RegistrationColumn } from './registration.column';
 })
 export class RegistrationComponent implements OnInit {
   backupList: Registration[] = []
-  listData: Registration[] = []
+  listData: Registration[] = [
+    new Registration(1,0,"mr","สมชาย รักดี"),
+    new Registration(2,0,"miss","สมหญิง รักดี"),
+    new Registration(3,0,"mr","สมศักด์ รักดี"),
+    new Registration(4,0,"miss","สมปอง รักดี"),
+  ]
   current = new Registration(-1)
   listColumns = new RegistrationColumn().listColumns
 
@@ -29,7 +35,7 @@ export class RegistrationComponent implements OnInit {
     this.modal.create({
       nzTitle: 'เพิ่มข้อมูลเวชระเบียน',
       nzContent: content,
-      nzClosable: false,
+      nzClosable: true,
       nzCentered: true,
       nzWidth: 750,
       nzOnOk: () => Promise.resolve()
@@ -44,9 +50,9 @@ export class RegistrationComponent implements OnInit {
   updateData(data: Registration, content: TemplateRef<{}>) {
     this.current = Object.assign(new Registration(-1), data)
     this.modal.create({
-      nzTitle: 'แก้ไขข้อมูลเวชระเบียนของ' + data.NAME,
+      nzTitle: 'แก้ไขข้อมูลเวชระเบียนของ ' + data.NAME,
       nzContent: content,
-      nzClosable: false,
+      nzClosable: true,
       nzCentered: true,
       nzWidth: 750,
       nzOnOk: () => Promise.resolve()

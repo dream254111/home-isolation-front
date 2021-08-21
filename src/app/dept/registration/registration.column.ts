@@ -9,7 +9,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         }, 
         {
             name: 'Ref ID',
@@ -17,7 +18,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'คำนำหน้า',
@@ -25,7 +27,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'ชื่อ-นามสกุล',
@@ -33,7 +36,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'เบอร์โทรศัพท์',
@@ -41,7 +45,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'Line ID',
@@ -49,7 +54,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'เวชระเบียน',
@@ -71,7 +77,8 @@ export class RegistrationColumn {
             filterFn: (list: string[], item: Registration) => list.some(name => item.STATUS_DISPLAY == name),
             filterMultiple: true,
             showFilter: true, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'วันที่เข้าระบบ',
@@ -79,7 +86,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'ผู้ลงข้อมูล',
@@ -87,7 +95,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'กาชาด',
@@ -95,7 +104,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'วันแรกที่มีอาการ',
@@ -103,7 +113,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'วันที่ตรวจพบเชื้อ',
@@ -111,7 +122,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'วิธีการตรวจ',
@@ -119,7 +131,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'สถานที่ตรวจ',
@@ -127,7 +140,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'หมายเหตุ',
@@ -135,7 +149,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'เลขบัตรประชาชน',
@@ -143,7 +158,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'เพศ',
@@ -151,7 +167,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'อายุ',
@@ -159,7 +176,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'วันเกิด',
@@ -167,7 +185,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'น้ำหนัก',
@@ -175,7 +194,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'สถานภาพ',
@@ -183,7 +203,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'โรคประจำตัว',
@@ -191,7 +212,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'สิทธิ์การรักษา',
@@ -199,7 +221,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'โรงพยาบาล',
@@ -207,7 +230,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'โครงการที่เข้าร่วม',
@@ -215,7 +239,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'ญาติสำหรับติดต่อฉุกเฉิน',
@@ -223,7 +248,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'เบอร์ฉุกเฉิน',
@@ -231,7 +257,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'เบอร์ฉุกเฉินสำรอง',
@@ -239,7 +266,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'บ้านเลขที่',
@@ -247,7 +275,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'ซอย',
@@ -255,7 +284,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'ถนน',
@@ -263,7 +293,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'แขวง/ตำบล',
@@ -271,7 +302,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'เขต/อำเภอ',
@@ -279,7 +311,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'จังหวัด',
@@ -287,7 +320,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'รหัสไปรษณีย์',
@@ -295,7 +329,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'โทรศัพท์มือถือ',
@@ -303,7 +338,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'รวมที่อยู่และเบอร์มือถือ',
@@ -311,7 +347,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'วันที่พบแพทย์ล่าสุด',
@@ -319,7 +356,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'แพทย์:สีผู้ป่วย',
@@ -327,7 +365,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'วันพบพยาบาลล่าสุด',
@@ -335,7 +374,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'พยาบาล:สีผู้ป่วย',
@@ -343,7 +383,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'ถ่ายบัตรประชาชน',
@@ -351,7 +392,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'ผลตรวจ COVID',
@@ -359,7 +401,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'ผู้ลงข้อมูล',
@@ -367,7 +410,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'สถานะ office',
@@ -375,7 +419,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'CM Alert HI',
@@ -383,7 +428,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'ลงชื่อ HI',
@@ -391,7 +437,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'วันที่อัพเดตข้อมูล',
@@ -399,7 +446,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'HI',
@@ -407,7 +455,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'CM Alert CI',
@@ -415,7 +464,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'ลงชื่อ CI',
@@ -423,7 +473,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'วันที่อัพเดตข้อมูล',
@@ -431,7 +482,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'CIO2',
@@ -439,7 +491,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'CI',
@@ -447,7 +500,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'เวชระเบียน:ต้องการนักจิตวิทยา',
@@ -455,7 +509,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'แพทย์:ต้องการนักจิตวิทยา',
@@ -463,7 +518,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'พยาบาล:ต้องการนักจิตวิทยา',
@@ -471,7 +527,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: 'ต้องการนักจิตวิทยา',
@@ -479,7 +536,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: false
+            fixRight: false,
+            nzWidth: "150px"
         },
         {
             name: '',
@@ -487,7 +545,8 @@ export class RegistrationColumn {
             filterFn: null,
             filterMultiple: false,
             showFilter: false, 
-            fixRight: true
+            fixRight: true,
+            nzWidth: "80px"
         },
     ]
 }
@@ -499,4 +558,5 @@ interface RegisterColumnItem {
     filterFn: NzTableFilterFn<Registration> | null;
     filterMultiple: boolean;
     fixRight: boolean;
+    nzWidth: string;
 }

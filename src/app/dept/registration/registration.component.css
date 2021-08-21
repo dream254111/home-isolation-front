@@ -26,3 +26,9 @@ nz-date-picker {
 nz-input-number {
     width: 100% !important;
 }
+
+/* row data */
+.ant-table-tbody > tr > td {
+    height: 5px;
+    padding: 5px 10px;
+}

@@ -38,17 +38,20 @@ import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 /* NgIcon Part */
 import { MailOutline } from '@ant-design/icons-angular/icons';
 import { AppstoreOutline } from '@ant-design/icons-angular/icons';
 import { SettingOutline } from '@ant-design/icons-angular/icons';
+import { PlusOutline } from '@ant-design/icons-angular/icons';
 import { PrescriptionComponent } from './dept/prescription/prescription.component';
 
 const icons = [
   MailOutline, 
   AppstoreOutline, 
-  SettingOutline
+  SettingOutline,
+  PlusOutline
 ];
 
 /* Router Part */
@@ -107,6 +110,7 @@ registerLocaleData(en);
     NzCheckboxModule,
     NzButtonModule,
     NzGridModule,
+    NzDividerModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
