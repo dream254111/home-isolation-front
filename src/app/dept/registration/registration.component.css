@@ -8,7 +8,11 @@ th.ant-table-cell {
 }
 
 .button-add {
-    margin: 10px;
+    float: right;
+}
+
+.header {
+    margin: 20px !important;
 }
 
 nz-select.dropdown-title {

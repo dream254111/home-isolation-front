@@ -4,6 +4,8 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 import { UtilService } from 'src/app/services/util.service';
 import { Registration } from './registration.model';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { NzTableFilterFn, NzTableFilterList } from 'ng-zorro-antd/table';
+import { RegistrationColumn } from './registration.column';
 
 @Component({
   selector: 'app-registration',
@@ -11,8 +13,12 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
+  backupList: Registration[] = []
   listData: Registration[] = []
   current = new Registration(-1)
+  listColumns = new RegistrationColumn().listColumns
+
+  nameSearch = ''
   
   constructor(public util: UtilService, private modal: NzModalService) { }
 
@@ -51,6 +57,20 @@ export class RegistrationComponent implements OnInit {
         })  
         .catch(err => console.error(err))
     })
+  }
 
+  searchName() {
+    if (this.nameSearch.length == 0 && this.backupList.length  != 0) {
+      this.listData = [...this.backupList]
+      this.backupList = []
+    } else if (this.backupList.length == 0) {
+      this.backupList = [...this.listData]
+      this.listData = this.listData.filter(item => item.NAME?.includes(this.nameSearch))
+      this.listData = [...this.listData]
+    } else {
+      this.listData = [...this.backupList]
+      this.listData = this.listData.filter(item => item.NAME?.includes(this.nameSearch))
+      this.listData = [...this.listData]
+    }
   }
 }

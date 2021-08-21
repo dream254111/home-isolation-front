@@ -1,70 +1,25 @@
-<button nz-button 
-    nzType="primary" 
-    nzShape="round"
-    (click)="addData(form)"
-    class="button-add">เพิ่มข้อมูล</button>
+<div nz-row [nzGutter]="[16, 16]" class="header">
+    <div nz-col nzSpan="4">
+        <input nz-input placeholder="ชื่อ-นามสกุลของผู้ป่วย" [(ngModel)]="nameSearch" />
+    </div>
+    <div nz-col nzSpan="4">
+        <button nz-button nzType="primary" nzShape="round" (click)="searchName()">ค้นหา</button>
+    </div>
+    <div nz-col nzSpan="16">
+        <button nz-button nzType="primary" nzShape="round" (click)="addData(form)" class="button-add">เพิ่มข้อมูล</button>
+    </div>
+</div>
+
 <nz-table #regisTable nzBordered [nzData]="listData" [nzScroll]="{ x: '8000px' }" nzSize="small">
     <thead>
         <tr>
-            <th nzWidth="50px">ID</th>
-            <th nzWidth="75px">Ref ID</th>
-            <th nzWidth="100px">คำนำหน้า</th>
-            <th>ชื่อ-นามสกุล</th>
-            <th>เบอร์โทรศัพท์</th>
-            <th>Line ID</th>
-            <th>เวชระเบียน</th>
-            <th>วันที่เข้าระบบ</th>
-            <th>ผู้ลงข้อมูล</th>
-            <th>กาชาด</th>
-            <th>วันแรกที่มีอาการ</th>
-            <th>วันที่ตรวจพบเชื้อ</th>
-            <th>วิธีการตรวจ</th>
-            <th>สถานที่ตรวจ</th>
-            <th>หมายเหตุ</th>
-            <th>เลขบัตรประชาชน</th>
-            <th>เพศ</th>
-            <th>อายุ</th>
-            <th>วันเกิด</th>
-            <th>น้ำหนัก</th>
-            <th>สถานภาพ</th>
-            <th>โรคประจำตัว</th>
-            <th>สิทธิ์การรักษา</th>
-            <th>โรงพยาบาล</th>
-            <th>โครงการที่เข้าร่วม</th>
-            <th>ญาติสำหรับติดต่อฉุกเฉิน</th>
-            <th>เบอร์ฉุกเฉิน</th>
-            <th>เบอร์ฉุกเฉินสำรอง</th>
-            <th>บ้านเลขที่</th>
-            <th>ซอย</th>
-            <th>ถนน</th>
-            <th>แขวง/ตำบล</th>
-            <th>เขต/อำเภอ</th>
-            <th>จังหวัด</th>
-            <th>รหัสไปรษณีย์</th>
-            <th>โทรศัพท์มือถือ</th>
-            <th>รวมที่อยู่และเบอร์มือถือ</th>
-            <th>วันที่พบแพทย์ล่าสุด</th>
-            <th>แพทย์:สีผู้ป่วย</th>
-            <th>วันพบพยาบาลล่าสุด</th>
-            <th>พยาบาล:สีผู้ป่วย</th>
-            <th>ถ่ายบัตรประชาชน</th>
-            <th>ผลตรวจ COVID</th>
-            <th>ผู้ลงข้อมูล</th>
-            <th>สถานะ office</th>
-            <th>CM Alert HI</th>
-            <th>ลงชื่อ HI</th>
-            <th>วันที่อัปเดตข้อมูล</th>
-            <th>HI</th>
-            <th>CM Alert CI</th>
-            <th>ลงชื่อ CI</th>
-            <th>วันที่อัปเดตข้อมูล</th>
-            <th>O2</th>
-            <th>CI</th>
-            <th>เวชระเบียน:ต้องการนักจิตวิทยา</th>
-            <th>แพทย์:ต้องการนักจิตวิทยา</th>
-            <th>พยาบาล:ต้องการนักจิตวิทยา</th>
-            <th>ต้องการนักจิตวิทยา</th>
-            <th nzRight></th>
+            <th
+                *ngFor="let column of listColumns"
+                [nzShowFilter]="column.showFilter"
+                [nzFilters]="column.listOfFilter"
+                [nzFilterFn]="column.filterFn"
+                [nzRight]="column.fixRight"
+            >{{ column.name }}</th>
         </tr>
     </thead>
     <tbody>
@@ -127,7 +82,12 @@
             <td></td>
             <td></td>
             <td>{{ data.PSY }}</td>
-            <td nzRight (click)="updateData(data, form)">Action</td>
+            <td nzRight>
+                <button nz-button 
+                    nzType="primary" 
+                    nzShape="round"
+                    (click)="updateData(data, form)">แก้ไขข้อมูล</button>
+            </td>
         </tr>
     </tbody>
 </nz-table>
