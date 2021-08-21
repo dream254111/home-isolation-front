@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Template } from '@angular/compiler/src/render3/r3_ast';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { UtilService } from 'src/app/services/util.service';
 import { Registration } from './registration.model';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registration',
@@ -9,8 +12,10 @@ import { Registration } from './registration.model';
 })
 export class RegistrationComponent implements OnInit {
   listData: Registration[] = []
+
+  current = new Registration(-1)
   
-  constructor(public util: UtilService) { 
+  constructor(public util: UtilService, private modal: NzModalService) { 
     var registration1: Registration = new Registration(1);
     registration1.TITLE = "Mr."
     registration1.REFID = undefined
@@ -62,7 +67,22 @@ export class RegistrationComponent implements OnInit {
     this.listData.push(registration1)
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  /* Modal Part */
+  createModal(content: TemplateRef<{}>) {
+    this.modal.create({
+      nzTitle: 'แบบฟอร์มกรอกข้อมูล',
+      nzContent: content,
+      nzClosable: false,
+      nzCentered: true,
+      nzWidth: 750
+    })
+  }
+
+
+  submitForm() {
+
   }
 
 }

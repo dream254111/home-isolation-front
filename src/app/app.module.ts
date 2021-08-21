@@ -29,6 +29,12 @@ import { OfficeComponent } from './dept/office/office.component';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 
 /* NgIcon Part */
 import { MailOutline } from '@ant-design/icons-angular/icons';
@@ -89,6 +95,12 @@ registerLocaleData(en);
     NzMenuModule,
     NzIconModule.forRoot(icons),
     NzTableModule,
+    NzModalModule,
+    NzSelectModule,
+    NzFormModule,
+    NzInputModule,
+    NzDatePickerModule,
+    NzInputNumberModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

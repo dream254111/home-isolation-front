@@ -59,6 +59,7 @@
             <th>แพทย์:ต้องการนักจิตวิทยา</th>
             <th>พยาบาล:ต้องการนักจิตวิทยา</th>
             <th>ต้องการนักจิตวิทยา</th>
+            <th nzRight></th>
         </tr>
     </thead>
     <tbody>
@@ -121,6 +122,310 @@
             <td></td>
             <td></td>
             <td>{{ data.PSY }}</td>
+            <td nzRight (click)="createModal(form)">Action</td>
         </tr>
     </tbody>
 </nz-table>
+
+<ng-template #form>
+    <form nz-form (ngSubmit)="submitForm()">
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="fullname">ชื่อ-นามสกุล</nz-form-label>
+            <nz-form-control [nzSm]="20">
+                <nz-input-group [nzAddOnBefore]="titleTemplate">
+                    <input nz-input id=fullname
+                        placeholder="ชื่อ-นามสกุลของผู้ป่วย"
+                        [(ngModel)]="current.NAME"
+                        [ngModelOptions]="{ standalone: true }" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="mobileno">เบอร์โทรศัพท์</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="mobileno"
+                    placeholder="เบอร์โทรศัพท์ของผู้ป่วย"
+                    [(ngModel)]="current.MOBILE"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+            <nz-form-label [nzSm]="4" nzFor="line">Line ID</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="line"
+                    placeholder="Line ID ของผู้ป่วย"
+                    [(ngModel)]="current.LINE"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="registatus">เวชระเบียน</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <nz-select id="registatus" 
+                    [(ngModel)]="current.STATUS" 
+                    [ngModelOptions]="{ standalone: true }">
+                    <nz-option nzValue="verified" nzLabel="ตรวจสอบแล้ว"></nz-option>
+                    <nz-option nzValue="pendingResult" nzLabel="รอผลตรวจ"></nz-option>
+                    <nz-option nzValue="pendingHi" nzLabel="รอพบ HI"></nz-option>
+                    <nz-option nzValue="noContact" nzLabel="ติดต่อไม่ได้"></nz-option>
+                    <nz-option nzValue="contacting" nzLabel="กำลังโทรติดต่อ"></nz-option>
+                    <nz-option nzValue="pendingVerify" nzLabel="รอการตรวจสอบ"></nz-option>
+                    <nz-option nzValue="anotherCampaign" nzLabel="ไม่เข้าร่วม - ร่วมโครงการอื่น"></nz-option>
+                    <nz-option nzValue="hospital" nzLabel="ไม่เข้าร่วม - รักษาที่ รพ."></nz-option>
+                    <nz-option nzValue="noResult" nzLabel="ไม่เข้าร่วม - ไม่มีผลตรวจ"></nz-option>
+                    <nz-option nzValue="outside" nzLabel="ไม่เข้าร่วม - อยู่นอก กทม."></nz-option>
+                    <nz-option nzValue="noData" nzLabel="ไม่เข้าร่วม - ไม่ให้ข้อมูล"></nz-option>
+                    <nz-option nzValue="normal" nzLabel="ไม่เข้าร่วม - หายแล้ว"></nz-option>
+                    <nz-option nzValue="dupName" nzLabel="ชื่อซ้ำ"></nz-option>
+                </nz-select>
+            </nz-form-control>
+            <nz-form-label [nzSm]="4" nzFor="inputname">ผู้ลงข้อมูล</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="inputname"
+                    placeholder="ชื่อ-นามสกุลของผู้ลงข้อมูล"
+                    [(ngModel)]="current.REGISTER"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="redcross">กาชาด</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <nz-select id="redcross" 
+                    [(ngModel)]="current.KACHART" 
+                    [ngModelOptions]="{ standalone: true }">
+                    <nz-option nzValue="redcross" nzLabel="กาชาด"></nz-option>
+                    <nz-option nzValue="lbh" nzLabel="LBH"></nz-option>
+                    <nz-option nzValue="other" nzLabel="อื่นๆ"></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="sympdate">วันแรกที่มีอาการ</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <nz-date-picker id="sympdate" 
+                    nzFormat="dd/MM/yyyy" 
+                    [(ngModel)]="current.DATESYMPTOM" 
+                    [ngModelOptions]="{ standalone: true }"></nz-date-picker>
+            </nz-form-control>
+            <nz-form-label [nzSm]="4" nzFor="defectdate">วันที่ตรวจพบเชื้อ</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <nz-date-picker id="defectdate" 
+                    nzFormat="dd/MM/yyyy" 
+                    [(ngModel)]="current.DATEPOSITIVE" 
+                    [ngModelOptions]="{ standalone: true }"></nz-date-picker>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="testing">วิธีการตรวจ</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <nz-select id="testing" 
+                    [(ngModel)]="current.TESTING" 
+                    [ngModelOptions]="{ standalone: true }">
+                    <nz-option nzValue="pcr" nzLabel="PCR"></nz-option>
+                    <nz-option nzValue="atk" nzLabel="ATK"></nz-option>
+                    <nz-option nzValue="other" nzLabel="อื่นๆ"></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="testloc">สถานที่ตรวจ</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="testloc"
+                    [(ngModel)]="current.TESTINGLOCATION"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+            <nz-form-label [nzSm]="4" nzFor="testremark">หมายเหตุ</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="testremark"
+                    [(ngModel)]="current.TESTINGREMARK"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="cid">เลขบัตรประชาชน</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="cid"
+                placeholder="13 หลัก (ไม่ต้องมี - คั่น)"
+                    [(ngModel)]="current.THAIID"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+            <nz-form-label [nzSm]="4" nzFor="gender">เพศ</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <nz-select id="gender" 
+                    [(ngModel)]="current.GENDER" 
+                    [ngModelOptions]="{ standalone: true }">
+                    <nz-option nzValue="male" nzLabel="ชาย"></nz-option>
+                    <nz-option nzValue="female" nzLabel="หญิง"></nz-option>
+                    <nz-option nzValue="other" nzLabel="อื่นๆ"></nz-option>
+                    <nz-option nzValue="novalue" nzLabel="ไม่ระบุ"></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="birthday">วันเกิด</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <nz-date-picker id="birthday" 
+                    nzFormat="dd/MM/yyyy" 
+                    [(ngModel)]="current.BIRTHDATE" 
+                    [ngModelOptions]="{ standalone: true }"></nz-date-picker>
+            </nz-form-control>
+            <nz-form-label [nzSm]="4" nzFor="weight">น้ำหนัก</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <nz-input-number id="weight"
+                    [nzMin]="0"
+                    [nzStep]="0.5"
+                    nzPlaceHolder="น้ำหนักของผู้ป่วย (กิโลกรัม)"
+                    [(ngModel)]="current.WEIGHT"
+                    [ngModelOptions]="{ standalone: true }">
+                </nz-input-number>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="marriage">สถานภาพ</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <nz-select id="marriage" 
+                    [(ngModel)]="current.MARRIAGE" 
+                    [ngModelOptions]="{ standalone: true }">
+                    <nz-option nzValue="single" nzLabel="โสด"></nz-option>
+                    <nz-option nzValue="marriage" nzLabel="แต่งงาน"></nz-option>
+                    <nz-option nzValue="divorce" nzLabel="หย่า"></nz-option>
+                    <nz-option nzValue="widow" nzLabel="หม้าย"></nz-option>
+                    <nz-option nzValue="novalue" nzLabel="ไม่ระบุ"></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="disease">โรคประจำตัว</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="disease"
+                    placeholder="โรคประจำตัวของผู้ป่วย"
+                    [(ngModel)]="current.DISEASE"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+            <nz-form-label [nzSm]="4" nzFor="health">สิทธิ์การรักษา</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="health"
+                    placeholder="สิทธิ์การรักษาของผู้ป่วย"
+                    [(ngModel)]="current.HEALTH"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="hospital">โรงพยาบาล</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="hospital"
+                    [(ngModel)]="current.HEALTHHOSPITAL"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+            <nz-form-label [nzSm]="4" nzFor="campaign">โครงการที่เข้าร่วม</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="campaign"
+                    placeholder="โครงการที่ผู้ป่วยเคยเข้าร่วม"
+                    [(ngModel)]="current.HEALTHPROJECT"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="relative">ญาติ</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="relative"
+                    placeholder="ชื่อ-นามสกุลของญาติที่สามารถติดต่อฉุกเฉิน"
+                    [(ngModel)]="current.RELATIVE"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+            <nz-form-label [nzSm]="4" nzFor="relmobile">เบอร์ฉุกเฉิน</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="relmobile"
+                    placeholder="เบอร์ที่สามารถติดต่อฉุกเฉิน"
+                    [(ngModel)]="current.RELATIVEMOBILE"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="relmobile2">เบอร์ฉุกเฉินสำรอง</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="relmobile2"
+                    placeholder="เบอร์ที่สามารถติดต่อฉุกเฉิน"
+                    [(ngModel)]="current.RELATIVEMOBILE2"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="houseno">บ้านเลขที่</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="houseno"
+                    placeholder="บ้านเลขที่"
+                    [(ngModel)]="current.HOMENO"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+            <nz-form-label [nzSm]="4" nzFor="soi">ซอย</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="soi"
+                    placeholder="ซอย"
+                    [(ngModel)]="current.HOMESOI"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="road">ถนน</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="road"
+                    placeholder="ถนน"
+                    [(ngModel)]="current.HOMEROAD"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+            <nz-form-label [nzSm]="4" nzFor="subdistrict">แขวง/ตำบล</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="subdistrict"
+                    placeholder="แขวง/ตำบล"
+                    [(ngModel)]="current.HOMESUBDISTRICT"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="district">เขต/อำเภอ</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="district"
+                    placeholder="เขต/อำเภอ"
+                    [(ngModel)]="current.HOMEDISTRICT"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+            <nz-form-label [nzSm]="4" nzFor="province">จังหวัด</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="province"
+                    placeholder="จังหวัด"
+                    [(ngModel)]="current.HOMEPROVINCE"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="postal">รหัสไปรษณีย์</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <input nz-input id="postal"
+                    placeholder="รหัสไปรษณีย์"
+                    [(ngModel)]="current.HOMEPOSTAL"
+                    [ngModelOptions]="{ standalone: true }" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="4" nzFor="mobiletype">ประเภทมือถือ</nz-form-label>
+            <nz-form-control [nzSm]="8">
+                <nz-select id="mobiletype" 
+                    [(ngModel)]="current.MOBILETYPE" 
+                    [ngModelOptions]="{ standalone: true }">
+                    <nz-option nzValue="android" nzLabel="Android"></nz-option>
+                    <nz-option nzValue="ios" nzLabel="iPhone"></nz-option>
+                    <nz-option nzValue="other" nzLabel="อื่นๆ"></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</ng-template>
+
+<ng-template #titleTemplate>
+    <nz-select [(ngModel)]="current.TITLE" class="dropdown-title">
+        <nz-option nzValue="mr" nzLabel="นาย"></nz-option>
+        <nz-option nzValue="mrs" nzLabel="นาง"></nz-option>
+        <nz-option nzValue="miss" nzLabel="นางสาว"></nz-option>
+        <nz-option nzValue="other" nzLabel="อื่นๆ"></nz-option>
+        <nz-option nzValue="novalue" nzLabel="ไม่ระบุ"></nz-option>
+    </nz-select>
+</ng-template>

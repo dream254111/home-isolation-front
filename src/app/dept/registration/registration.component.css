@@ -6,3 +6,15 @@ th.ant-table-cell {
 .cell-center {
     text-align: center;
 }
+
+nz-select.dropdown-title {
+    width: 100px !important;
+}
+
+nz-date-picker {
+    width: 100% !important;
+}
+
+nz-input-number {
+    width: 100% !important;
+}
