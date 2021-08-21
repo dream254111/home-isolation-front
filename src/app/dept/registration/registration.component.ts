@@ -73,4 +73,9 @@ export class RegistrationComponent implements OnInit {
       this.listData = [...this.listData]
     }
   }
+
+  onClearSearchClick() {
+    this.nameSearch = ''
+    this.searchName()
+  }
 }
