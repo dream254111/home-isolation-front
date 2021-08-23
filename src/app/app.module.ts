@@ -39,19 +39,27 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzTimelineModule } from 'ng-zorro-antd/timeline';
+import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
 /* NgIcon Part */
 import { MailOutline } from '@ant-design/icons-angular/icons';
 import { AppstoreOutline } from '@ant-design/icons-angular/icons';
 import { SettingOutline } from '@ant-design/icons-angular/icons';
 import { PlusOutline } from '@ant-design/icons-angular/icons';
+import { SolutionOutline } from '@ant-design/icons-angular/icons';
+import { FileDoneOutline } from '@ant-design/icons-angular/icons';
 import { PrescriptionComponent } from './dept/prescription/prescription.component';
 
 const icons = [
   MailOutline, 
   AppstoreOutline, 
   SettingOutline,
-  PlusOutline
+  PlusOutline,
+  SolutionOutline,
+  FileDoneOutline
 ];
 
 /* Router Part */
@@ -110,7 +118,11 @@ registerLocaleData(en);
     NzCheckboxModule,
     NzButtonModule,
     NzGridModule,
-    NzDividerModule
+    NzDividerModule,
+    NzTimelineModule,
+    NzDescriptionsModule,
+    NzTypographyModule,
+    NzTabsModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

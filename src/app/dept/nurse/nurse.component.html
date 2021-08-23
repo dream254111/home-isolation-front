@@ -1,61 +1,288 @@
-<nz-table #nurseTable nzBordered [nzData]="listData" [nzScroll]="{ x: '4000px' }" nzSize="small">
+<div nz-row [nzGutter]="[16, 16]" class="header">
+    <div nz-col nzSpan="8">
+        <nz-input-group [nzSuffix]="inputClear">
+            <input nz-input placeholder="ชื่อ-นามสกุลของผู้ป่วย" [(ngModel)]="nameSearch"/>
+        </nz-input-group>
+    </div>
+    <div nz-col nzSpan="6">
+        <button nz-button nzType="default" nzShape="round" (click)="searchName()">
+            <i nz-icon nzType="search" nzTheme="outline"></i> ค้นหา
+        </button>
+    </div>
+    <div nz-col nzSpan="10">
+        <!-- Some function -->
+    </div>
+</div>
+
+<nz-table #nurseTable nzBordered [nzData]="listData" [nzScroll]="{ x: 'auto' }" nzSize="small">
     <thead>
         <tr>
-            <th>วันที่เข้าระบบ</th>
-            <th>ID</th>
-            <th>Ref ID</th>
-            <th>CM Alert พยาบาล</th>
-            <th>คำนำหน้า</th>
-            <th>ชื่อ-นามสกุล</th>
-            <th>เบอร์โทรศัพท์</th>
-            <th>Line ID</th>
-            <th>เวชระเบียน</th>
-            <th>อายุ</th>
-            <th>น้ำหนัก</th>
-            <th>โรคประจำตัว</th>
-            <th>วันที่ตรวจพบเชื้อ</th>
-            <th>วันที่ควร Discharge</th>
-            <th>ชื่อแพทย์</th>
-            <th>วันที่พบแพทย์ล่าสุด</th>
-            <th>แพทย์:สีผู้ป่วย</th>
-            <th>#REF!</th>
-            <th>แพทย์:ประวัติสั่งยา</th>
-            <th>ID พยาบาล</th>
-            <th>วันพบพยาบาลล่าสุด</th>
-            <th>พยาบาล:สีผู้ป่วย</th>
-            <th>พยาบาล:อาการ</th>
-            <th>พยาบาล:หมายเหตุ</th>
-            <th>พยาบาล:ต้องการนักจิตวิทยา</th>
-            <th>วันที่พยาบาลตรวจล่าสุด</th>
+            <th
+                *ngFor="let column of listColumns"
+                [nzShowFilter]="column.showFilter"
+                [nzFilters]="column.listOfFilter"
+                [nzFilterFn]="column.filterFn"
+                [nzRight]="column.fixRight"
+                [nzWidth]="column.nzWidth"
+            >{{ column.name }}</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let data of nurseTable.data">
-            <td></td>
-            <td>{{ data.PAT_ID }}</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>{{ data.ID }}</td>
-            <td>{{ util.DateToString(data.DATE) }}</td>
-            <td>{{ data.COLOR }}</td>
-            <td>{{ data.RECORD }}</td>
-            <td>{{ data.REMARK }}</td>
-            <td>{{ data.PSY }}</td>
+            <td class="cell-center">{{ util.DateToString(data.DATEIN) }}</td>
+            <td class="cell-center">{{ data.ID }}</td>
+            <td class="cell-center">{{ data.REFCOMBINED }}</td>
+            <td>{{ data.TITLE_DISPLAY }}</td>
+            <td>{{ data.NAME }}</td>
+            <td>{{ data.MOBILE }}</td>
+            <td>{{ data.LINE }}</td>
+            <td>{{ data.STATUS }}</td>
+            <td>{{ data.AGE }}</td>
+            <td>{{ data.WEIGHT }}</td>
+            <td>{{ data.DISEASE }}</td>
+            <td>{{ util.DateToString(data.DATEPOSITIVE) }}</td>
+            <td>{{ util.DateToString(data.DATEDISCHARGE) }}</td>
+            <td>{{ data.DOCTOR_LATEST.DOCTOR }}</td>
+            <td>{{ data.DOCTOR_LATEST.DOCTOR_DATE }}</td>
+            <td>{{ data.DOCTOR_LATEST.DOCTOR_COLOR }}</td>
+            <td>{{ data.DOCTOR_LATEST.DOCTOR_RECORD }}</td>
+            <td>{{ data.DOCTOR_LATEST.DOCTOR_HISTORY }}</td>
+            <td>{{ data.NURSE_LATEST.NURSE }}</td>
+            <td>{{ data.NURSE_LATEST.NURSE_DATE }}</td>
+            <td>{{ data.NURSE_LATEST.NURSE_COLOR }}</td>
+            <td>{{ data.NURSE_LATEST.NURSE_RECORD }}</td>
+            <td>{{ data.NURSE_LATEST.NURSE_NOTE }}</td>
+            <td>{{ data.NURSE_PSY }}</td>
+            <td nzRight>
+                <button nz-button 
+                    nzType="link" 
+                    nzShape="round"
+                    (click)="updateData(data, form)">ตรวจสอบข้อมูล</button>
+            </td>
         </tr>
     </tbody>
 </nz-table>
+
+<ng-template #form>
+    <form nz-form>
+        <nz-tabset>
+            <nz-tab [nzTitle]="titleTemplate_info">
+                <ng-template #titleTemplate_info>
+                    <i nz-icon nzType="solution" nzTheme="outline"></i>
+                    ข้อมูลผู้ป่วย
+                </ng-template>
+                <div>
+                    <nz-divider nzPlain nzText="ประวัติผู้ป่วย" nzOrientation="left"></nz-divider>
+                    <nz-form-item>
+                        <nz-form-label [nzSm]="4" nzFor="fullname">ชื่อ-นามสกุล</nz-form-label>
+                        <nz-form-control [nzSm]="20">
+                            <nz-input-group [nzAddOnBefore]="titleTemplate">
+                                <input nz-input id=fullname
+                                    placeholder="ชื่อ-นามสกุลของผู้ป่วย"
+                                    [(ngModel)]="current.NAME"
+                                    [ngModelOptions]="{ standalone: true }" 
+                                    disabled/>
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-label [nzSm]="4" nzFor="mobileno">เบอร์โทรศัพท์</nz-form-label>
+                        <nz-form-control [nzSm]="8">
+                            <input nz-input id="mobileno"
+                                placeholder="เบอร์โทรศัพท์ของผู้ป่วย"
+                                [(ngModel)]="current.MOBILE"
+                                [ngModelOptions]="{ standalone: true }" 
+                                disabled/>
+                        </nz-form-control>
+                        <nz-form-label [nzSm]="4" nzFor="line">Line ID</nz-form-label>
+                        <nz-form-control [nzSm]="8">
+                            <input nz-input id="line"
+                                placeholder="Line ID ของผู้ป่วย"
+                                [(ngModel)]="current.LINE"
+                                [ngModelOptions]="{ standalone: true }" 
+                                disabled/>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-label [nzSm]="4" nzFor="registatus">เวชระเบียน</nz-form-label>
+                        <nz-form-control [nzSm]="8">
+                            <nz-select id="registatus" 
+                                [(ngModel)]="current.STATUS" 
+                                [ngModelOptions]="{ standalone: true }"
+                                disabled>
+                                <nz-option nzValue="verified" nzLabel="ตรวจสอบแล้ว"></nz-option>
+                                <nz-option nzValue="pendingResult" nzLabel="รอผลตรวจ"></nz-option>
+                                <nz-option nzValue="pendingHi" nzLabel="รอพบ HI"></nz-option>
+                                <nz-option nzValue="noContact" nzLabel="ติดต่อไม่ได้"></nz-option>
+                                <nz-option nzValue="contacting" nzLabel="กำลังโทรติดต่อ"></nz-option>
+                                <nz-option nzValue="pendingVerify" nzLabel="รอการตรวจสอบ"></nz-option>
+                                <nz-option nzValue="anotherCampaign" nzLabel="ไม่เข้าร่วม - ร่วมโครงการอื่น"></nz-option>
+                                <nz-option nzValue="hospital" nzLabel="ไม่เข้าร่วม - รักษาที่ รพ."></nz-option>
+                                <nz-option nzValue="noResult" nzLabel="ไม่เข้าร่วม - ไม่มีผลตรวจ"></nz-option>
+                                <nz-option nzValue="outside" nzLabel="ไม่เข้าร่วม - อยู่นอก กทม."></nz-option>
+                                <nz-option nzValue="noData" nzLabel="ไม่เข้าร่วม - ไม่ให้ข้อมูล"></nz-option>
+                                <nz-option nzValue="normal" nzLabel="ไม่เข้าร่วม - หายแล้ว"></nz-option>
+                                <nz-option nzValue="dupName" nzLabel="ชื่อซ้ำ"></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-label [nzSm]="4" nzFor="defectdate">วันที่ตรวจพบเชื้อ</nz-form-label>
+                        <nz-form-control [nzSm]="8">
+                            <nz-date-picker id="defectdate" 
+                                nzFormat="dd/MM/yyyy" 
+                                [(ngModel)]="current.DATEPOSITIVE" 
+                                [ngModelOptions]="{ standalone: true }"
+                                disabled></nz-date-picker>
+                        </nz-form-control>
+                        <nz-form-label [nzSm]="4" nzFor="dischargedate">วันที่ควร discharge</nz-form-label>
+                        <nz-form-control [nzSm]="8">
+                            <nz-date-picker id="dischargedate" 
+                                nzFormat="dd/MM/yyyy" 
+                                [(ngModel)]="current.DATEDISCHARGE" 
+                                [ngModelOptions]="{ standalone: true }"
+                                disabled></nz-date-picker>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-label [nzSm]="4" nzFor="age">อายุ</nz-form-label>
+                        <nz-form-control [nzSm]="8">
+                            <nz-input-number id="age"
+                                [nzMin]="0"
+                                [nzStep]="0.5"
+                                nzPlaceHolder="อายุผู้ป่วย"
+                                [(ngModel)]="current.AGE"
+                                [ngModelOptions]="{ standalone: true }"
+                                disabled>
+                            </nz-input-number>
+                        </nz-form-control>
+                        <nz-form-label [nzSm]="4" nzFor="weight">น้ำหนัก</nz-form-label>
+                        <nz-form-control [nzSm]="8">
+                            <nz-input-number id="weight"
+                                [nzMin]="0"
+                                [nzStep]="0.5"
+                                nzPlaceHolder="น้ำหนักของผู้ป่วย (กิโลกรัม)"
+                                [(ngModel)]="current.WEIGHT"
+                                [ngModelOptions]="{ standalone: true }"
+                                disabled>
+                            </nz-input-number>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-label [nzSm]="4" nzFor="disease">โรคประจำตัว</nz-form-label>
+                        <nz-form-control [nzSm]="8">
+                            <input nz-input id="disease"
+                                placeholder="โรคประจำตัวของผู้ป่วย"
+                                [(ngModel)]="current.DISEASE"
+                                [ngModelOptions]="{ standalone: true }"
+                                disabled/>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-divider nzPlain nzText="การตรวจโดยแพทย์" nzOrientation="left"></nz-divider>
+                    <nz-timeline>
+                        <nz-timeline-item *ngFor="let data of current.DOCTOR; let indexOfelement=index;">
+                            <span nz-typography>การตรวจครั้งที่ {{ indexOfelement+1 }}</span>
+                            <span nz-typography nzType="secondary"><i nz-icon nzType="clock-circle" nzTheme="outline"></i> {{ data.DOCTOR_DATE | date: 'dd/MM/YYYY HH:mm:ss' }}</span>
+                            <nz-descriptions
+                            nzBordered
+                            [nzColumn]="{ xxl: 2, xl: 2, lg: 2, md: 2, sm: 1, xs: 1 }"
+                            nzSize="small"
+                            >
+                                <nz-descriptions-item nzTitle="แพทย์">{{ data.DOCTOR }}</nz-descriptions-item>
+                                <nz-descriptions-item nzTitle="สี">{{ data.DOCTOR_COLOR }}</nz-descriptions-item>
+                                <nz-descriptions-item nzTitle="อาการ" [nzSpan]="2">
+                                    {{ data.DOCTOR_RECORD }}
+                                </nz-descriptions-item>
+                                <nz-descriptions-item nzTitle="ประวัติการสั่งยา" [nzSpan]="2">
+                                    {{ data.DOCTOR_HISTORY }}
+                                </nz-descriptions-item>
+                            </nz-descriptions>
+                        </nz-timeline-item>
+                    </nz-timeline>
+                </div>
+            </nz-tab>
+            <nz-tab [nzTitle]="titleTemplate_nurse">
+                <ng-template #titleTemplate_nurse>
+                    <i nz-icon nzType="file-done" nzTheme="outline"></i>
+                    การตรวจโดยพยาบาล
+                </ng-template>
+                <div>
+                    <nz-divider nzPlain nzText="การตรวจโดยพยาบาล" nzOrientation="left"></nz-divider>
+                    <nz-timeline>
+                        <nz-timeline-item *ngFor="let data of current.NURSE; let indexOfelement=index;">
+                            <span nz-typography>การตรวจครั้งที่ {{ indexOfelement+1 }}</span>
+                            <span nz-typography nzType="secondary"><i nz-icon nzType="clock-circle" nzTheme="outline"></i> {{ data.NURSE_DATE | date: 'dd/MM/YYYY HH:mm:ss' }}</span>
+                            <nz-descriptions
+                            nzBordered
+                            [nzColumn]="{ xxl: 2, xl: 2, lg: 2, md: 2, sm: 1, xs: 1 }"
+                            nzSize="small"
+                            >
+                                <nz-descriptions-item nzTitle="พยาบาล" [nzSpan]="1">{{ data.NURSE }}</nz-descriptions-item>
+                                <nz-descriptions-item nzTitle="สี" [nzSpan]="1">{{ data.NURSE_COLOR }}</nz-descriptions-item>
+                                <nz-descriptions-item nzTitle="อาการ" [nzSpan]="2">{{ data.NURSE_RECORD }}</nz-descriptions-item>
+                            </nz-descriptions>
+                        </nz-timeline-item>
+                        <nz-timeline-item nzColor="red" [nzDot]="dotTemplate">
+                            <span nz-typography>การตรวจครั้งปัจจุบัน</span>
+                            <span nz-typography nzType="secondary"><i nz-icon nzType="clock-circle" nzTheme="outline"></i> เวลาปัจจุบัน</span>
+                            <nz-descriptions
+                            nzBordered
+                            [nzColumn]="{ xxl: 2, xl: 2, lg: 2, md: 2, sm: 2, xs: 1 }"
+                            nzSize="small"
+                            >
+                                <nz-descriptions-item nzTitle="พยาบาล" [nzSpan]="1">
+                                    <nz-form-control>
+                                        <input nz-input id="nurse" placeholder="ใส่รหัสพยาบาล"/>
+                                    </nz-form-control>
+                                </nz-descriptions-item>
+                                <nz-descriptions-item nzTitle="สี" [nzSpan]="1">
+                                    <nz-form-control>
+                                        <nz-select id="nurse_color">
+                                            <nz-option nzValue="green1" nzLabel="เขียว 1" selected></nz-option>
+                                            <nz-option nzValue="green2" nzLabel="เขียว 2"></nz-option>
+                                            <nz-option nzValue="green3" nzLabel="เขียว 3"></nz-option>
+                                            <nz-option nzValue="yellow" nzLabel="เหลือง"></nz-option>
+                                            <nz-option nzValue="red1" nzLabel="แดง 1"></nz-option>
+                                            <nz-option nzValue="red2" nzLabel="แดง 1"></nz-option>
+                                            <nz-option nzValue="discharge" nzLabel="discharge"></nz-option>
+                                        </nz-select>
+                                    </nz-form-control>
+                                </nz-descriptions-item>
+                                <nz-descriptions-item nzTitle="อาการ" [nzSpan]="2">
+                                    <nz-form-control>
+                                        <textarea nz-input id="record" placeholder="บันทึกอาการ" nzAutosize></textarea>
+                                    </nz-form-control>
+                                </nz-descriptions-item>
+                                <nz-descriptions-item [nzSpan]="2">
+                                    <button nz-button nzType="primary">บันทึกการตรวจผู้ป่วย</button>
+                                </nz-descriptions-item>
+                            </nz-descriptions>
+                        </nz-timeline-item>
+                        <ng-template #dotTemplate>
+                            <i nz-icon nzType="clock-circle-o" style="font-size: 16px;"></i>
+                        </ng-template>
+                    </nz-timeline>
+                </div>
+            </nz-tab>
+        </nz-tabset>
+    </form>
+</ng-template>
+
+<ng-template #titleTemplate>
+    <nz-select [(ngModel)]="current.TITLE" class="dropdown-title" disabled>
+        <nz-option nzValue="mr" nzLabel="นาย"></nz-option>
+        <nz-option nzValue="mrs" nzLabel="นาง"></nz-option>
+        <nz-option nzValue="miss" nzLabel="นางสาว"></nz-option>
+        <nz-option nzValue="other" nzLabel="อื่นๆ"></nz-option>
+        <nz-option nzValue="novalue" nzLabel="ไม่ระบุ"></nz-option>
+    </nz-select>
+</ng-template>
+
+<ng-template #inputClear>
+    <i nz-icon
+        *ngIf="nameSearch.length > 0"
+        class="ant-input-clear-icon"
+        nzTheme="fill"
+        nzType="close-circle"
+        (click)="onClearSearchClick()"></i>
+</ng-template>
