@@ -1,11 +1,7 @@
-import { Template } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
-import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { UtilService } from 'src/app/services/util.service';
 import { Registration } from './registration.model';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { NzTableFilterFn, NzTableFilterList } from 'ng-zorro-antd/table';
 import { RegistrationColumn } from './registration.column';
 
 @Component({
