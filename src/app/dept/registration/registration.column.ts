@@ -75,7 +75,7 @@ export class RegistrationColumn {
                 { text: 'ชื่อซ้ำ', value: 'ชื่อซ้ำ' },
             ],
             filterFn: (list: string[], item: Registration) => list.some(name => item.STATUS_DISPLAY == name),
-            filterMultiple: true,
+            filterMultiple: false,
             showFilter: true, 
             fixRight: false,
             nzWidth: "150px"

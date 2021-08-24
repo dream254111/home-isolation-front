@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UtilService } from 'src/app/services/util.service';
+import { LogisitcColumn } from './logistic.column';
 import { Logistic } from './logistic.model';
 
 @Component({
@@ -9,6 +10,7 @@ import { Logistic } from './logistic.model';
 })
 export class LogisticComponent implements OnInit {
   listData: Logistic[] = []
+  listColumn = new LogisitcColumn().listColumn;
 
   constructor(public util: UtilService) { 
     var logistic1 = new Logistic(1)
