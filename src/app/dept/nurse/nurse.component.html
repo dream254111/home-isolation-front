@@ -29,7 +29,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let data of nurseTable.data">
-            <td class="cell-center">{{ util.DateToString(data.DATEIN) }}</td>
+            <td class="cell-center">{{ util.DateTimeToString(data.DATEIN) }}</td>
             <td class="cell-center">{{ data.ID }}</td>
             <td class="cell-center">{{ data.REFCOMBINED }}</td>
             <td>{{ data.TITLE_DISPLAY }}</td>
@@ -43,14 +43,14 @@
             <td>{{ util.DateToString(data.DATEPOSITIVE) }}</td>
             <td>{{ util.DateToString(data.DATEDISCHARGE) }}</td>
             <td>{{ data.DOCTOR_LATEST.DOCTOR }}</td>
-            <td>{{ data.DOCTOR_LATEST.DOCTOR_DATE }}</td>
+            <td>{{ util.DateTimeToString(data.DOCTOR_LATEST.DOCTOR_DATE) }}</td>
             <td>{{ data.DOCTOR_LATEST.DOCTOR_COLOR }}</td>
-            <td>{{ data.DOCTOR_LATEST.DOCTOR_RECORD }}</td>
+            <td nzEllipsis>{{ data.DOCTOR_LATEST.DOCTOR_RECORD }}</td>
             <td>{{ data.DOCTOR_LATEST.DOCTOR_HISTORY }}</td>
             <td>{{ data.NURSE_LATEST.NURSE }}</td>
-            <td>{{ data.NURSE_LATEST.NURSE_DATE }}</td>
+            <td>{{ util.DateTimeToString(data.NURSE_LATEST.NURSE_DATE) }}</td>
             <td>{{ data.NURSE_LATEST.NURSE_COLOR }}</td>
-            <td>{{ data.NURSE_LATEST.NURSE_RECORD }}</td>
+            <td nzEllipsis>{{ data.NURSE_LATEST.NURSE_RECORD }}</td>
             <td>{{ data.NURSE_LATEST.NURSE_NOTE }}</td>
             <td>{{ data.NURSE_PSY }}</td>
             <td nzRight>

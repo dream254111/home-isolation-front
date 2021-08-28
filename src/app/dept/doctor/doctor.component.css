@@ -1,0 +1,38 @@
+th.ant-table-cell {
+    text-align: center;
+    font-weight: bolder;
+}
+
+.cell-center {
+    text-align: center;
+}
+
+.button-add {
+    float: right;
+}
+
+.header {
+    margin: 20px !important;
+}
+
+nz-select.dropdown-title {
+    width: 100px !important;
+}
+
+nz-date-picker {
+    width: 100% !important;
+}
+
+nz-input-number {
+    width: 100% !important;
+}
+
+nz-select {
+    width: 100%;
+  }
+
+/* row data */
+.ant-table-tbody > tr > td {
+    height: 5px;
+    padding: 5px 10px;
+}
