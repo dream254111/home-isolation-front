@@ -20,9 +20,9 @@ export class UtilService {
         var month = this.ToTwoDigitNumber(input.getMonth() + 1)
         var date = this.ToTwoDigitNumber(input.getDate())
         var separator_date = "/"
-        var hour = input.getHours() 
-        var minute = input.getMinutes()
-        var second = input.getSeconds()
+        var hour = this.ToTwoDigitNumber(input.getHours())
+        var minute = this.ToTwoDigitNumber(input.getMinutes())
+        var second = this.ToTwoDigitNumber(input.getSeconds())
         var separator_time = ":"
 
         return date + separator_date + month + separator_date + year + " " + 
