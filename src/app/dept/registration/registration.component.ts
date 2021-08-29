@@ -3,6 +3,10 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 import { UtilService } from 'src/app/services/util.service';
 import { Registration } from './registration.model';
 import { RegistrationColumn } from './registration.column';
+import { HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { environment } from 'src/environments/environment'; 
 
 @Component({
   selector: 'app-registration',
@@ -22,9 +26,15 @@ export class RegistrationComponent implements OnInit {
 
   nameSearch = ''
   
-  constructor(public util: UtilService, private modal: NzModalService) { }
+  constructor(
+    public util: UtilService, 
+    private modal: NzModalService,
+    private http: HttpClient
+  ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.http.get(environment.registrationURL).subscribe(data => console.log(data))
+  }
 
   addData(content: TemplateRef<{}>) {
     this.current = new Registration(this.listData.length + 1)

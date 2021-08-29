@@ -75,7 +75,8 @@
               "browserTarget": "home-isolation-front:build:production"
             },
             "development": {
-              "browserTarget": "home-isolation-front:build:development"
+              "browserTarget": "home-isolation-front:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

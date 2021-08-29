@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // registrationURL: 'https://covid-api-demo.herokuapp.com/medicalRecord'
+  registrationURL: 'http://localhost:4200/api'
 };
 
 /*

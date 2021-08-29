@@ -1,0 +1,11 @@
+{
+    "/api": {
+        "target": "https://covid-api-demo.herokuapp.com/medicalRecord",
+        "secure": true,
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/api": ""
+        }
+    }
+}
