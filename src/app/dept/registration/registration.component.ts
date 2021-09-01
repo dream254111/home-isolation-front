@@ -15,13 +15,8 @@ import { environment } from 'src/environments/environment';
 })
 export class RegistrationComponent implements OnInit {
   backupList: Registration[] = []
-  listData: Registration[] = [
-    new Registration(1,0,"mr","สมชาย รักดี"),
-    new Registration(2,0,"miss","สมหญิง รักดี"),
-    new Registration(3,0,"mr","สมศักด์ รักดี"),
-    new Registration(4,0,"miss","สมปอง รักดี"),
-  ]
-  current = new Registration(-1)
+  listData: Registration[] = []
+  current: Registration = new Registration()
   listColumns = new RegistrationColumn().listColumns
 
   nameSearch = ''
@@ -33,61 +28,65 @@ export class RegistrationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.http.get(environment.registrationURL).subscribe(data => console.log(data))
+    this.http.get<Registration[]>(environment.registrationURL)
+      .subscribe(res => {
+        this.listData = res
+        console.log('Data', res)
+      }, err => console.error(err))
   }
 
   addData(content: TemplateRef<{}>) {
-    this.current = new Registration(this.listData.length + 1)
-    this.modal.create({
-      nzTitle: 'เพิ่มข้อมูลเวชระเบียน',
-      nzContent: content,
-      nzClosable: true,
-      nzCentered: true,
-      nzWidth: 750,
-      nzOnOk: () => Promise.resolve()
-        .then(() => {
-          this.listData.push(this.current)
-          this.listData = [...this.listData]
-        })  
-        .catch(err => console.error(err))
-    })
+    // this.current = new Registration(this.listData.length + 1)
+    // this.modal.create({
+    //   nzTitle: 'เพิ่มข้อมูลเวชระเบียน',
+    //   nzContent: content,
+    //   nzClosable: true,
+    //   nzCentered: true,
+    //   nzWidth: 750,
+    //   nzOnOk: () => Promise.resolve()
+    //     .then(() => {
+    //       this.listData.push(this.current)
+    //       this.listData = [...this.listData]
+    //     })  
+    //     .catch(err => console.error(err))
+    // })
   }
 
   updateData(data: Registration, content: TemplateRef<{}>) {
-    this.current = Object.assign(new Registration(-1), data)
-    this.modal.create({
-      nzTitle: 'แก้ไขข้อมูลเวชระเบียนของ ' + data.NAME,
-      nzContent: content,
-      nzClosable: true,
-      nzCentered: true,
-      nzWidth: 750,
-      nzOnOk: () => Promise.resolve()
-        .then(() => {
-          var index = this.listData.findIndex(data => data.ID == this.current.ID)
-          this.listData[index] = this.current
-          this.listData = [...this.listData]
-        })  
-        .catch(err => console.error(err))
-    })
+    // this.current = Object.assign(new Registration(-1), data)
+    // this.modal.create({
+    //   nzTitle: 'แก้ไขข้อมูลเวชระเบียนของ ' + data.NAME,
+    //   nzContent: content,
+    //   nzClosable: true,
+    //   nzCentered: true,
+    //   nzWidth: 750,
+    //   nzOnOk: () => Promise.resolve()
+    //     .then(() => {
+    //       var index = this.listData.findIndex(data => data.ID == this.current.ID)
+    //       this.listData[index] = this.current
+    //       this.listData = [...this.listData]
+    //     })  
+    //     .catch(err => console.error(err))
+    // })
   }
 
   searchName() {
-    if (this.nameSearch.length == 0 && this.backupList.length  != 0) {
-      this.listData = [...this.backupList]
-      this.backupList = []
-    } else if (this.backupList.length == 0) {
-      this.backupList = [...this.listData]
-      this.listData = this.listData.filter(item => item.NAME?.includes(this.nameSearch))
-      this.listData = [...this.listData]
-    } else {
-      this.listData = [...this.backupList]
-      this.listData = this.listData.filter(item => item.NAME?.includes(this.nameSearch))
-      this.listData = [...this.listData]
-    }
+    // if (this.nameSearch.length == 0 && this.backupList.length  != 0) {
+    //   this.listData = [...this.backupList]
+    //   this.backupList = []
+    // } else if (this.backupList.length == 0) {
+    //   this.backupList = [...this.listData]
+    //   this.listData = this.listData.filter(item => item.NAME?.includes(this.nameSearch))
+    //   this.listData = [...this.listData]
+    // } else {
+    //   this.listData = [...this.backupList]
+    //   this.listData = this.listData.filter(item => item.NAME?.includes(this.nameSearch))
+    //   this.listData = [...this.listData]
+    // }
   }
 
   onClearSearchClick() {
-    this.nameSearch = ''
-    this.searchName()
+    // this.nameSearch = ''
+    // this.searchName()
   }
 }
