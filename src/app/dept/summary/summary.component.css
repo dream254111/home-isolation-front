@@ -2,12 +2,36 @@
     background-color: #ff8080;
 }
 
+.red-light-btn {
+    background-color: #ff9999;
+}
+
+.red-lighter-btn {
+    background-color: #ffb3b3;
+}
+
 .yellow-btn {
     background-color: #e6e645;
 }
 
+.yellow-light-btn {
+    background-color: #e6e673;
+}
+
 .green-btn {
     background-color: #66cc66;
+}
+
+.green-light-btn {
+    background-color: #7acc7a;
+}
+
+.green-lighter-btn {
+    background-color: #a1e6a1;
+}
+
+.white-btn {
+    background-color: #fff;
 }
 
 .big-btn {
@@ -16,6 +40,7 @@
     display: block;
     margin: 0 auto;
     border: 1px solid black;
+    font-size: 30px;
 }
 
 .big-btn:hover {

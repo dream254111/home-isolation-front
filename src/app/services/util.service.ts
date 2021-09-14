@@ -1,7 +1,13 @@
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 
 @Injectable({ providedIn: 'root' })
 export class UtilService {
+    onURLChange = new EventEmitter<boolean>()
+
+    showNav(isShow: boolean) {
+        this.onURLChange.emit(isShow)
+    }
+
     DateToString(input: Date | null | undefined): string {
         if (input == undefined || input == null) return ''
 

@@ -22,7 +22,6 @@ export class RegistrationComponent implements OnInit {
   nameSearch = ''
   
   constructor(
-    public util: UtilService, 
     private modal: NzModalService,
     private http: HttpClient
   ) { }

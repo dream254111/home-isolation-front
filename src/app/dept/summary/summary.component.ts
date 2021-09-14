@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
   selector: 'app-summary',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SummaryComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private util: UtilService
+  ) { }
 
   ngOnInit(): void {
+    this.util.showNav(true)
   }
 
 }

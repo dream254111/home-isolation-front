@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilService } from '../services/util.service';
 
 @Component({
   selector: 'app-navigation',
@@ -6,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
+  isDisplay = true
 
-  constructor() { }
+  constructor(private util: UtilService) {
+    this.util.onURLChange.subscribe(data => this.isDisplay = data)
+  }
 
   ngOnInit(): void {
   }
