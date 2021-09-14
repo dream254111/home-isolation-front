@@ -1,0 +1,26 @@
+<form nz-form [formGroup]="validateForm" (ngSubmit)="login()">
+    <nz-form-item>
+        <div nz-col [nzSm]="6"></div>
+        <nz-form-label [nzSm]="4" nzFor="username">
+            ชื่อผู้ใช้
+        </nz-form-label>
+        <nz-form-control [nzSm]="4" nzErrorTip="กรุณากรอกชื่อผู้ใช้">
+            <input type="text" nz-input formControlName="username" id="username" placeholder="ชื่อผู้ใช้">
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <div nz-col [nzSm]="6"></div>
+        <nz-form-label [nzSm]="4" ngFor="password">
+            รหัสผ่าน
+        </nz-form-label>
+        <nz-form-control [nzSm]="4" nzErrorTip="กรุณากรอกรหัสผ่าน">
+            <input type="password" nz-input formControlName="password" id="password" placeholder="รหัสผ่าน">
+        </nz-form-control>
+    </nz-form-item>
+    <div nz-row>
+        <div nz-col [nzSm]="10"></div>
+        <div nz-col [nzSm]="4">
+            <button nz-button nzType="primary" class="right">เข้าสู่ระบบ</button>
+        </div>
+    </div>
+</form>

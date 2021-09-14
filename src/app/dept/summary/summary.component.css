@@ -1,0 +1,37 @@
+.red-btn {
+    background-color: #ff8080;
+}
+
+.yellow-btn {
+    background-color: #e6e645;
+}
+
+.green-btn {
+    background-color: #66cc66;
+}
+
+.big-btn {
+    min-height: 200px;
+    min-width: 200px;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+.big-btn:hover {
+    color: white;
+}
+
+.big-btn:focus {
+    color: white;
+    text-shadow: 3px 3px gray;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+.title-txt {
+    font-weight: bold;
+    font-size: 30px;
+}

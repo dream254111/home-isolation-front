@@ -6,7 +6,7 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -52,6 +52,8 @@ import { PlusOutline } from '@ant-design/icons-angular/icons';
 import { SolutionOutline } from '@ant-design/icons-angular/icons';
 import { FileDoneOutline } from '@ant-design/icons-angular/icons';
 import { PrescriptionComponent } from './dept/prescription/prescription.component';
+import { LoginComponent } from './authen/login/login.component';
+import { SummaryComponent } from './dept/summary/summary.component';
 
 const icons = [
   MailOutline, 
@@ -64,6 +66,7 @@ const icons = [
 
 /* Router Part */
 const appRouter: Routes = [
+  { path: 'login', component: LoginComponent },
   { path: 'doctor', component: DoctorComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'pharmacist', component: MedicineComponent },
@@ -74,7 +77,8 @@ const appRouter: Routes = [
   { path: 'cm', component: CmComponent },
   { path: 'office', component: OfficeComponent },
   { path: 'prescription', component: PrescriptionComponent },
-  { path: '', redirectTo: 'registration', pathMatch: 'full' },
+  { path: 'summarize', component: SummaryComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 ]
 
 registerLocaleData(en);
@@ -95,12 +99,15 @@ registerLocaleData(en);
     CmComponent,
     OfficeComponent,
     PrescriptionComponent,
+    LoginComponent,
+    SummaryComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
 
     /* Custom Import */
     RouterModule.forRoot(appRouter),
